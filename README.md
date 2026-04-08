@@ -47,7 +47,7 @@ go build -o triplicate-tui .
 ## Usage
 
 ```bash
-# Start at the default homepage
+# Start at the configured homepage
 ./triplicate-tui
 
 # Navigate directly to a URL
@@ -95,7 +95,7 @@ low_color = false
 |-----|---------|-------------|
 | `homepage` | `gemini://gemini.circumlunar.space/` | URL loaded on startup |
 | `theme` | `dark` | `dark` or `light` (reserved for future use) |
-| `low_color` | `false` | Force attribute-only rendering on colour terminals |
+| `low_color` | `false` | Force attribute-only rendering (bold/underline/reverse instead of colors) |
 
 ---
 
@@ -119,6 +119,31 @@ If a previously-trusted certificate changes, you will be warned before connectin
 | `~/.config/triplicate/config` | User settings |
 | `~/.config/triplicate/known_hosts` | TOFU certificate fingerprints |
 | `~/.config/triplicate/bookmarks` | Saved URLs (`url [title]` per line) |
+
+---
+
+## Troubleshooting
+
+**Text in the command bar is hard to read or invisible**
+
+Add `low_color = true` to your config file. This switches the UI to
+attribute-only rendering (reverse video for the command bar) which works
+reliably on any terminal color scheme.
+
+```ini
+low_color = true
+```
+
+**Terminal too small message on startup**
+
+triplicate-tui requires at least 80×24. Resize your terminal window or
+reduce the font size.
+
+**Gemini certificate warning on every visit**
+
+This means the server's certificate changed since you last visited. Review
+the new fingerprint shown on screen and press `[c]` to update your trust
+store, or `[r]` to cancel.
 
 ---
 
