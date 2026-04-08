@@ -33,10 +33,10 @@ func InitTheme(s tcell.Screen, forceLowColor bool) {
 			Foreground(tcell.ColorOlive).
 			Dim(true)
 		StyleCmdbar = tcell.StyleDefault.
-			Background(tcell.ColorGray).
+			Background(tcell.ColorSilver).
 			Foreground(tcell.ColorBlack)
 		StylePrompt = tcell.StyleDefault.
-			Background(tcell.ColorGray).
+			Background(tcell.ColorSilver).
 			Foreground(tcell.ColorBlack).
 			Bold(true)
 	} else {
